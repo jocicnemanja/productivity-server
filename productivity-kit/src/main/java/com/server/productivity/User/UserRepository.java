@@ -1,4 +1,4 @@
-package com.server.productivitykit.User;
+package com.server.productivity.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

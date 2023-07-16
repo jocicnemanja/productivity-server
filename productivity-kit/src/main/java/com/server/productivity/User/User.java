@@ -1,11 +1,9 @@
-package com.server.productivitykit.User;
+package com.server.productivity.User;
 
-import com.server.productivitykit.Habittracker.Habit;
-import com.server.productivitykit.utils.Base;
+import com.server.productivity.utils.Base;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "users")

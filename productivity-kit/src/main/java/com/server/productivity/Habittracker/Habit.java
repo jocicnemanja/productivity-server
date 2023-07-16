@@ -1,5 +1,5 @@
-package com.server.productivitykit.Habittracker;
-import com.server.productivitykit.utils.Base;
+package com.server.productivity.Habittracker;
+import com.server.productivity.utils.Base;
 import jakarta.persistence.*;
 import java.util.List;
 

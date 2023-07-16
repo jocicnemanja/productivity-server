@@ -1,4 +1,4 @@
-package com.server.productivitykit.utils;
+package com.server.productivity.utils;
 
 import java.io.IOException;
 import javax.servlet.Filter;

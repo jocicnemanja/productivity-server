@@ -1,10 +1,7 @@
-package com.server.productivitykit.Habittracker;
+package com.server.productivity.Habittracker;
 
-import com.server.productivitykit.utils.Base;
+import com.server.productivity.utils.Base;
 import jakarta.persistence.*;
-import org.springframework.data.annotation.CreatedDate;
-
-import java.util.Date;
 
 @Entity
 public class HabitRecord  extends Base {

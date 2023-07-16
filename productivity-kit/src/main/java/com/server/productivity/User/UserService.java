@@ -1,4 +1,4 @@
-package com.server.productivitykit.User;
+package com.server.productivity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

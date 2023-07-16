@@ -1,4 +1,4 @@
-package com.server.productivitykit.configuration;
+package com.server.productivity.configuration;
 
 import org.springframework.data.domain.AuditorAware;
 
