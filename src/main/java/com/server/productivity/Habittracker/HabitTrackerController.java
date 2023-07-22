@@ -22,20 +22,32 @@ public class HabitTrackerController {
         this.habitTrackerService = habitTrackerService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
-    public List<Habit> getHabits() {
-    return this.habitTrackerService.getHabits();
+    public List<Habit> getHabitsByDate(@RequestParam(required = false) Integer month, @RequestParam(required = false) Integer year ) {
+    return this.habitTrackerService.getHabitsByDate();
  }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public ResponseEntity<Habit> createHabit(@RequestBody Habit habit) {
         try {
-            log.info("POST Habit", habit);
-            Habit _habit = habitTrackerService.save(habit);
-            return new ResponseEntity<>(_habit, HttpStatus.CREATED);
+            Habit habitRes = habitTrackerService.save(habit);
+            return new ResponseEntity<>(habitRes, HttpStatus.CREATED);
         } catch (Exception e) {
             log.error("POST Habit ERORR", e);
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @DeleteMapping
+    public ResponseEntity<Habit> deleteHabit(@RequestBody Habit habit) {
+        try {
+            habitTrackerService.delete(habit);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            log.error("DELETE Habit ERORR", e);
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
