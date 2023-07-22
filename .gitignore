@@ -91,6 +91,9 @@ fabric.properties
 
 ### Java ###
 # Compiled class file
+
+/tmp
+/target
 *.class
 
 # Log file
