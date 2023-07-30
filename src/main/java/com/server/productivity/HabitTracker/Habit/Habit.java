@@ -9,18 +9,23 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "habits")
+@Table(name = "habits", schema = "test")
 public class Habit extends Base {
-    @Id
-//    @SequenceGenerator(
-//        name="habit_sequence",
-//        sequenceName = "habit_sequence",
-//        allocationSize = 1
+//    @Id
+////    @SequenceGenerator(
+////        name="habit_sequence",
+////        sequenceName = "habit_sequence",
+////        allocationSize = 1
+////    )
+//    @GeneratedValue(
+//        strategy = GenerationType.AUTO
 //    )
-    @GeneratedValue(
-        strategy = GenerationType.AUTO
-    )
-    private long id;
+//    private long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    private Long id;
 
     @Column(name = "description", nullable = false)
     private String description;
@@ -55,12 +60,18 @@ public class Habit extends Base {
     }
 
     public void addRecord(HabitRecord habitRecord){
-        habitRecords.add(habitRecord);
-        habitRecord.setHabit(this);
+        if (habitRecord != null) {
+            if (habitRecords == null) {
+                habitRecords = new HashSet<>();
+            }
+
+            habitRecords.add(habitRecord);
+            // item.setOrder(this);
+        }
     }
-    public void removeRecord(HabitRecord habitRecord){
-        habitRecords.remove(habitRecord);
-        habitRecord.setHabit(null);
-    }
+//    public void removeRecord(HabitRecord habitRecord){
+//        habitRecords.remove(habitRecord);
+//        habitRecord.setHabit(null);
+//    }
 
 }

@@ -1,23 +1,27 @@
 package com.server.productivity.HabitTracker.HabitRecord;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.server.productivity.HabitTracker.Habit.Habit;
 import com.server.productivity.utils.Base;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="habit_records")
+@Table(name="habit_records", schema = "test")
 public class HabitRecord  extends Base {
 
-    @Id
-//    @SequenceGenerator(
-//        name="habit_record_sequence",
-//        sequenceName = "habit_record_sequence",
-//        allocationSize = 1
+//    @Id
+////    @SequenceGenerator(
+////        name="habit_record_sequence",
+////        sequenceName = "habit_record_sequence",
+////        allocationSize = 1
+////    )
+//    @GeneratedValue(
+//        strategy = GenerationType.AUTO
 //    )
-    @GeneratedValue(
-        strategy = GenerationType.AUTO
-    )
-    private long id;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name="id")
+private Long id;
 
     @Column(name = "status", nullable = false)
     private String status;
@@ -26,6 +30,7 @@ public class HabitRecord  extends Base {
     // default fetch type for ManyToOne: EAGER
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "habit_id")
+    @JsonIgnore
     private Habit habit;
 
 

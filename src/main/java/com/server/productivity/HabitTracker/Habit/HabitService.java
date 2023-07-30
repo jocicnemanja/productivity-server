@@ -53,6 +53,8 @@ public class HabitService {
             HabitRecord habitRecord = new HabitRecord();
             habitRecord.setStatus("NOT_DONE");
             habit.getHabitRecords().add(habitRecord);
+            habitRecord.setHabit(habit);
+
         }
 
         return this.habitRepository.save(habit);
