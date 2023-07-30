@@ -2,12 +2,14 @@ package com.server.productivity.HabitTracker.Habit;
 import com.server.productivity.HabitTracker.HabitRecord.HabitRecord;
 import com.server.productivity.utils.Base;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Entity
+@Table(name = "habits")
 public class Habit extends Base {
     @Id
 //    @SequenceGenerator(
@@ -23,8 +25,10 @@ public class Habit extends Base {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @OneToMany(mappedBy = "habit", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "habit")
     private Set<HabitRecord> habitRecords = new HashSet<>();
+//    @OneToMany(mappedBy = "habit", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private Set<HabitRecord> habitRecords = new HashSet<>();
 
     public long getId() {
         return id;
@@ -58,20 +62,5 @@ public class Habit extends Base {
         habitRecords.remove(habitRecord);
         habitRecord.setHabit(null);
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof HabitRecord )) return false;
-        return id != (((HabitRecord) o).getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
-//    @ManyToOne
-//    @JoinColumn(name="user_id",  nullable=false)
-//    private User user;
 
 }

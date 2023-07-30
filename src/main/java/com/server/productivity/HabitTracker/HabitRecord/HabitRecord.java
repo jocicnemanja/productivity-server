@@ -5,6 +5,7 @@ import com.server.productivity.utils.Base;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name="habit_records")
 public class HabitRecord  extends Base {
 
     @Id
@@ -21,7 +22,10 @@ public class HabitRecord  extends Base {
     @Column(name = "status", nullable = false)
     private String status;
 
+
+    // default fetch type for ManyToOne: EAGER
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "habit_id")
     private Habit habit;
 
 
