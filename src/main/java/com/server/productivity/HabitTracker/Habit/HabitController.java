@@ -1,4 +1,4 @@
-package com.server.productivity.Habittracker;
+package com.server.productivity.HabitTracker.Habit;
 
 import com.server.productivity.utils.CorsFilter;
 import org.slf4j.Logger;
@@ -12,27 +12,27 @@ import java.util.List;
 
 @RestController()
 @RequestMapping("api/v1/habits")
-public class HabitTrackerController {
+public class HabitController {
 
-    private final HabitTrackerService  habitTrackerService;
+    private final HabitService  habitService;
     private final Logger log = LoggerFactory.getLogger(CorsFilter.class);
 
     @Autowired
-    public HabitTrackerController(HabitTrackerService habitTrackerService) {
-        this.habitTrackerService = habitTrackerService;
+    public HabitController(HabitService habitService) {
+        this.habitService = habitService;
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public List<Habit> getHabitsByDate(@RequestParam(required = false) Integer month, @RequestParam(required = false) Integer year ) {
-    return this.habitTrackerService.getHabitsByDate();
+    return this.habitService.getHabitsByDate();
  }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public ResponseEntity<Habit> createHabit(@RequestBody Habit habit) {
         try {
-            Habit habitRes = habitTrackerService.save(habit);
+            Habit habitRes = habitService.save(habit);
             return new ResponseEntity<>(habitRes, HttpStatus.CREATED);
         } catch (Exception e) {
             log.error("POST Habit ERORR", e);
@@ -44,9 +44,10 @@ public class HabitTrackerController {
     @DeleteMapping
     public ResponseEntity<Habit> deleteHabit(@RequestBody Habit habit) {
         try {
-            habitTrackerService.delete(habit);
+            habitService.delete(habit);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
+
             log.error("DELETE Habit ERORR", e);
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
