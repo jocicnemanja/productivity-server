@@ -23,14 +23,8 @@ public class HabitController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
-    public List<Habit> getHabitsByDate(@RequestParam(required = false) Integer month, @RequestParam(required = false) Integer year ) {
-    return this.habitService.getHabitsByDate();
- }
-
-    @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping("/current-month")
-    public List<Habit> getHabitsWithRecordsFilteredByMonthAndYear(@RequestParam(required = false) String month, @RequestParam(required = false) String year) {
-        return this.habitService.findByMonthAndYear(9,2023);
+    public List<Habit> getHabitsWithRecordsFilteredByMonthAndYear(@RequestParam(required = false) int month, @RequestParam(required = false) int year) {
+        return this.habitService.findByMonthAndYear(month,year);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
