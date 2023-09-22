@@ -9,30 +9,18 @@ import jakarta.persistence.*;
 @Table(name="habit_records", schema = "test")
 public class HabitRecord  extends Base {
 
-//    @Id
-////    @SequenceGenerator(
-////        name="habit_record_sequence",
-////        sequenceName = "habit_record_sequence",
-////        allocationSize = 1
-////    )
-//    @GeneratedValue(
-//        strategy = GenerationType.AUTO
-//    )
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(name="id")
-private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    private Long id;
 
     @Column(name = "status", nullable = false)
     private String status;
 
-
-    // default fetch type for ManyToOne: EAGER
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "habit_id")
     @JsonIgnore
     private Habit habit;
-
 
     public long getId() {
         return id;

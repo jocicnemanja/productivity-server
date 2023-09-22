@@ -2,8 +2,12 @@ package com.server.productivity.HabitTracker.Habit;
 import com.server.productivity.HabitTracker.HabitRecord.HabitRecord;
 import com.server.productivity.utils.Base;
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.Join;
 import lombok.Data;
+import org.springframework.data.jpa.domain.Specification;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,16 +15,6 @@ import java.util.Set;
 @Entity
 @Table(name = "habits", schema = "test")
 public class Habit extends Base {
-//    @Id
-////    @SequenceGenerator(
-////        name="habit_sequence",
-////        sequenceName = "habit_sequence",
-////        allocationSize = 1
-////    )
-//    @GeneratedValue(
-//        strategy = GenerationType.AUTO
-//    )
-//    private long id;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +26,6 @@ public class Habit extends Base {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "habit")
     private Set<HabitRecord> habitRecords = new HashSet<>();
-//    @OneToMany(mappedBy = "habit", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private Set<HabitRecord> habitRecords = new HashSet<>();
 
     public long getId() {
         return id;
@@ -69,9 +61,5 @@ public class Habit extends Base {
             // item.setOrder(this);
         }
     }
-//    public void removeRecord(HabitRecord habitRecord){
-//        habitRecords.remove(habitRecord);
-//        habitRecord.setHabit(null);
-//    }
 
 }

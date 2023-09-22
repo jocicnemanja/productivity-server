@@ -6,14 +6,11 @@ com/server/productivity/utils/CorsFilter.class
 com/server/productivity/ProductivityKitApplication.class
 com/server/productivity/HabitTracker/HabitRecord/HabitRecordService.class
 com/server/productivity/Greeting/GreetingController.class
-com/server/productivity/HabitTracker/Habit/HabitService.class
 com/server/productivity/HabitTracker/Habit/HabitRepository.class
-com/server/productivity/HabitTracker/Habit/HabitController.class
 com/server/productivity/HabitTracker/HabitRecord/HabitRecord.class
 com/server/productivity/Greeting/Greeting.class
 com/server/productivity/HabitTracker/HabitRecord/HabitRecordRepository.class
 com/server/productivity/utils/Base.class
 com/server/productivity/User/User.class
-com/server/productivity/configuration/AuditorAwareImpl.class
 com/server/productivity/HabitTracker/HabitRecord/HabitRecordController.class
 com/server/productivity/User/UserService.class

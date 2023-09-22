@@ -29,6 +29,12 @@ public class HabitController {
  }
 
     @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/current-month")
+    public List<Habit> getHabitsWithRecordsForCurrentMonth(@RequestParam(required = false) Integer month, @RequestParam(required = false) Integer year ) {
+        return this.habitService.getHabitsWithRecordsForCurrentMonth();
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public ResponseEntity<Habit> createHabit(@RequestBody Habit habit) {
         try {
@@ -52,4 +58,6 @@ public class HabitController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
 }
