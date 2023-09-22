@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController()
@@ -30,8 +29,8 @@ public class HabitController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/current-month")
-    public List<Habit> getHabitsWithRecordsForCurrentMonth(@RequestParam(required = false) Integer month, @RequestParam(required = false) Integer year ) {
-        return this.habitService.getHabitsWithRecordsForCurrentMonth();
+    public List<Habit> getHabitsWithRecordsFilteredByMonthAndYear(@RequestParam(required = false) String month, @RequestParam(required = false) String year) {
+        return this.habitService.findByMonthAndYear(9,2023);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
