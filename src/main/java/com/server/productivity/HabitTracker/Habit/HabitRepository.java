@@ -16,12 +16,11 @@ public interface HabitRepository extends JpaRepository<Habit, Long>, JpaSpecific
 
    @Query("SELECT habit FROM Habit habit " +
            "JOIN FETCH habit.habitRecords habitRecord " +
-           "WHERE CAST(YEAR(habitRecord.createdDate) AS int) = :year " +
-           "AND CAST(MONTH(habitRecord.createdDate) AS int) = :month " +
-           "AND CAST(YEAR(habit.createdDate) AS int) = :year " +
-           "AND CAST(MONTH(habit.createdDate) AS int) = :month")
+           "WHERE CAST(YEAR(habit.createdDate) AS int) = :year " +
+           "AND CAST(MONTH(habit.createdDate) AS int) = :month " +
+           "AND CAST(YEAR(habitRecord.createdDate) AS int) = :year " +
+           "AND CAST(MONTH(habitRecord.createdDate) AS int) = :month")
    List<Habit> findByMonthAndYear(@Param("month") int month, @Param("year") int year);
-
 }
 
 
